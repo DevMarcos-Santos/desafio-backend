@@ -15,9 +15,9 @@ export class TaskService{
         }
     }
 
-    async listTasks(){
+    async listTasks(skip: string){
         try{
-            const result = await this.taskRepository.listTasks();
+            const result = await this.taskRepository.listTasks(skip);
             return result;
         }catch(error){
             throw error

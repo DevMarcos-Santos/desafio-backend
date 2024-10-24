@@ -1,5 +1,6 @@
 
 import { Injectable } from "@nestjs/common";
+import { parse } from "path";
 import { PrismaService } from "src/database/prisma.service";
 import { Task } from "src/types/task";
 
@@ -25,9 +26,12 @@ export class TaskRepository{
         }
     }
 
-    async listTasks(){
+    async listTasks(skip: string){
         try{
-            const result = await this.prismaService.task.findMany();
+            const result = await this.prismaService.task.findMany({
+                skip:parseInt(skip),
+                take:10
+            });
             return result
         }catch(error){
             throw error

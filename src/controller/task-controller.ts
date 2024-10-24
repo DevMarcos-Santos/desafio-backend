@@ -18,9 +18,9 @@ export class TaskController{
     }
 
     @Get()
-    async listTasks(@Res() res: Response){
+    async listTasks(@Body() body: { skip: string}, @Res() res: Response){
         try{
-            const result = await this.taskService.listTasks();
+            const result = await this.taskService.listTasks(body.skip);
             return res.status(200).json(result)
         }catch(error){
             return res.status(400).json(error)
