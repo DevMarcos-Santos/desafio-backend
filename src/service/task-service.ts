@@ -14,4 +14,13 @@ export class TaskService{
             throw error
         }
     }
+
+    async listTasks(){
+        try{
+            const result = await this.taskRepository.listTasks();
+            return result;
+        }catch(error){
+            throw error
+        }
+    }
 }

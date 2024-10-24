@@ -5,7 +5,7 @@ import { Task } from "src/types/task";
 
 @Injectable()
 export class TaskRepository{
-    constructor(private prismaService: PrismaService){}
+    constructor(private readonly prismaService: PrismaService){}
 
     async createTask(task: Task){
         try{
@@ -20,6 +20,15 @@ export class TaskRepository{
                 }
             })
             return result;
+        }catch(error){
+            throw error
+        }
+    }
+
+    async listTasks(){
+        try{
+            const result = await this.prismaService.task.findMany();
+            return result
         }catch(error){
             throw error
         }
