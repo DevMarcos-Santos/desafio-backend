@@ -26,11 +26,34 @@ export class TaskRepository{
         }
     }
 
-    async listTasks(skip: string){
+    async listTasks(){
+        try{
+            const result = await this.prismaService.task.findMany();
+            return result
+        }catch(error){
+            throw error
+        }
+    }
+
+    async listTask(id: number){
         try{
             const result = await this.prismaService.task.findMany({
-                skip:parseInt(skip),
-                take:10
+                where: {
+                    id: id
+                }
+            });
+            return result
+        }catch(error){
+            throw error
+        }
+    }
+
+    async deleteTask(id: number){
+        try{
+            const result = await this.prismaService.task.delete({
+                where: {
+                    id: id
+                }
             });
             return result
         }catch(error){

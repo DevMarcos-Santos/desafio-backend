@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Res } from "@nestjs/common";
 import { TaskService } from "src/service/task-service";
 import { Response } from "express";
 import { Task } from "src/types/task";
@@ -18,9 +18,29 @@ export class TaskController{
     }
 
     @Get()
-    async listTasks(@Body() body: { skip: string}, @Res() res: Response){
+    async listTasks( @Res() res: Response){
         try{
-            const result = await this.taskService.listTasks(body.skip);
+            const result = await this.taskService.listTasks();
+            return res.status(200).json(result)
+        }catch(error){
+            return res.status(400).json(error)
+        }
+    }
+
+    @Get(':id')
+    async listTask(@Param() params: any, @Res() res: Response){
+        try{
+            const result = await this.taskService.listTask(parseInt(params.id));
+            return res.status(200).json(result)
+        }catch(error){
+            return res.status(400).json(error)
+        }
+    }
+
+    @Delete(':id')
+    async deleteTask(@Param() params: any, @Res() res: Response){
+        try{
+            const result = await this.taskService.deleteTask(parseInt(params.id));
             return res.status(200).json(result)
         }catch(error){
             return res.status(400).json(error)
