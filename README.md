@@ -1,7 +1,7 @@
 
 
 
-## Project setup
+## nstalação de Dependências
 
 ```bash
 $ npm install
@@ -23,26 +23,31 @@ $ npx prisma migrate dev --name init
 ```
 
 
-## Compile and run the project
+## Compilação do Projeto
 
 ```bash
-# development
 $ npm run start
 
-# watch mode
+#or
 $ npm run start:dev
+```
 
 ## Run tests
 
 ```bash
 # unit tests
 $ npm run test
-
+```
 
 ## Docker
 
+```bash
 $ docker-compose up --build
+```
 
 ## Swagger
 
+```bash
 http://localhost:3000/api
+
+```
