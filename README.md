@@ -1,7 +1,7 @@
 
 
 
-## nstalação de Dependências
+## Instalação de Dependências
 
 ```bash
 $ npm install
