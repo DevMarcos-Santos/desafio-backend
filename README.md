@@ -43,7 +43,7 @@ $ npm run start:dev
 ```bash
 # unit tests
 $ npm run test
-``
+```
 
 ## Swagger
 
