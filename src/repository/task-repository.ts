@@ -1,8 +1,6 @@
 
 import { Injectable } from "@nestjs/common";
-import { Task } from "@prisma/client";
-import { parse } from "path";
-import { PrismaService } from "src/database/prisma.service";
+import { PrismaService } from "../database/prisma.service";
 import { TaskType } from "src/types/task";
 
 @Injectable()
