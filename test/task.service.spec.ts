@@ -58,5 +58,69 @@ describe('TaskService', () => {
                 createdBy: 'user@example.com',
             })
         })
+
+        it('should return a array of update task', async () => {
+
+            const taskCreate = {
+                title: 'Test Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'user@example.com',
+            }
+            const tasksCreated = await taskService.createTask(taskCreate);
+
+            const task = {
+                title: 'Update Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'userupdate@example.com',
+            }
+            const tasks = await taskService.updateTask(task, tasksCreated.id.toString());
+
+            expect(tasks).toMatchObject({
+                title: 'Update Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'userupdate@example.com',
+            })
+        })
+
+        it('should return a task ', async () => {
+            const task = {
+                title: 'Test Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'user@example.com',
+            }
+            const tasks = await taskService.createTask(task);
+
+            const getTask = await taskService.listTask(tasks.id)
+
+            expect(getTask[0]).toMatchObject({
+                title: 'Test Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'user@example.com',
+            })
+        })
+
+        it('should return a task deleted ', async () => {
+            const task = {
+                title: 'Test Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'user@example.com',
+            }
+            const tasks = await taskService.createTask(task);
+
+            const deleteTask = await taskService.listTask(tasks.id)
+
+            expect(deleteTask[0]).toMatchObject({
+                title: 'Test Task',
+                description: 'This is a test task.',
+                status: 1,
+                createdBy: 'user@example.com',
+            })
+        })
     })
 })
