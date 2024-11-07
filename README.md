@@ -22,6 +22,12 @@ $ npx prisma migrate dev --name init
 
 ```
 
+## Docker
+
+```bash
+$ docker-compose up --build
+```
+
 
 ## Compilação do Projeto
 
@@ -37,13 +43,7 @@ $ npm run start:dev
 ```bash
 # unit tests
 $ npm run test
-```
-
-## Docker
-
-```bash
-$ docker-compose up --build
-```
+``
 
 ## Swagger
 
